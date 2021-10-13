@@ -1,0 +1,110 @@
+### Is API alive ?
+GET http://127.0.0.1:8080/
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+<> 2021-08-25T100611.200.txt
+<> 2021-08-25T100609.200.txt
+<> 2021-08-25T100606.200.txt
+<> 2021-08-25T100511.200.txt
+<> 2021-08-25T100401.200.txt
+<> 2021-08-25T100228.200.txt
+<> 2021-08-25T100115.200.txt
+
+### Get all names
+GET http://127.0.0.1:8080/names
+Accept: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+<> 2021-08-25T100401-1.200.txt
+<> 2021-08-25T100116.200.txt
+
+### Create a new name
+POST http://127.0.0.1:8080/name
+Content-Type: application/json
+
+{
+  "Type": "NewType",
+  "Kind": "PublicPaas",
+  "Expression": "blabla"
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+<> 2021-08-25T100402.201.txt
+<> 2021-08-25T100116.201.txt
+<> 2021-08-25T100033.201.txt
+<> 2021-08-25T100013.201.txt
+<> 2021-08-25T095436.201.txt
+<> 2021-08-25T035318.201.txt
+<> 2021-08-24T112134.201.txt
+<> 2021-08-24T112109.201.txt
+<> 2021-08-24T112042.201.txt
+
+### Request a name
+GET http://127.0.0.1:8080/name/NewType
+Accept: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+<> 2021-08-25T100402.200.txt
+<> 2021-08-25T100116-1.200.txt
+
+### Update a name
+PATCH http://127.0.0.1:8080/names/NewType
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Type": "NewType",
+  "Kind": "PublicPaas",
+  "Expression": "boubou"
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+<> 2021-08-25T100402-1.200.txt
+<> 2021-08-25T100116-2.200.txt
+<> 2021-08-25T100049.200.txt
+<> 2021-08-25T095436-1.200.txt
+<> 2021-08-25T035318-1.200.txt
+<> 2021-08-24T112134-3.200.txt
+<> 2021-08-24T112110-1.200.txt
+
+### Delete a name
+DELETE http://127.0.0.1:8080/names/NewType
+Accept: application/json
+Content-Type: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+<> 2021-08-25T100402-2.200.txt
+<> 2021-08-25T100116-3.200.txt
+<> 2021-08-25T100107.200.txt
+
+
